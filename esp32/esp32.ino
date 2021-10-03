@@ -4,13 +4,13 @@
 #define MAX_VAL 32767
 #define MAX_AMP 65535
 #define SAMPLING_FREQ 44100 //this is the spotify sample rate
+//hyperparameters
 #define FFT_N 2048 //must be power of 2
 #define BASS_START_FREQ 20
-#define BASS_END_FREQ 200
+#define BASS_END_FREQ 250
 #define MAX_RGB_SPECTRUM 767
-#define MIN_MUL 0.1
-#define VOL_MUL 2.0
-// the number of the LED pin
+#define MIN_MUL 0.01
+//the number of the LED pin
 #define R_PIN 14
 #define G_PIN 13
 #define B_PIN 32
@@ -102,8 +102,7 @@ void read_data(const uint8_t *data, uint32_t len){
     input_index++;
     if (input_index == FFT_N)
     {
-      float mul = max_amp_in_buff*VOL_MUL/MAX_AMP;
-      if (mul>1.0)mul=1.0;
+      float mul = max_amp_in_buff*1.0/MAX_VAL;
       if (mul >= MIN_MUL)
       {    
         fft_execute(real_fft_plan);
