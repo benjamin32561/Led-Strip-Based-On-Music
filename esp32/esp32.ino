@@ -7,9 +7,10 @@
 //hyperparameters
 #define FFT_N 2048 //must be power of 2
 #define BASS_START_FREQ 20
-#define BASS_END_FREQ 250
+#define BASS_END_FREQ 150
 #define MAX_RGB_SPECTRUM 767
 #define MIN_MUL 0.01
+#define MAX_MAG 700
 //the number of the LED pin
 #define R_PIN 14
 #define G_PIN 13
@@ -73,7 +74,7 @@ void changeByMusic(float mul){
   if (mapped_rgb<=255){
     rgb_data.r = 255-mapped_rgb;
     rgb_data.g = mapped_rgb;
-  }else if(mapped_rgb<=511){
+  }else if(mapped_rgb<511){
     mapped_rgb-=255;
     rgb_data.g = 255-mapped_rgb;
     rgb_data.b = mapped_rgb;
@@ -118,6 +119,8 @@ void read_data(const uint8_t *data, uint32_t len){
               fundamental_freq = k/total_time;
           }
         }
+        mul = max_magnitude/MAX_MAG;
+        if(mul>1.0)mul=1.0;
         if (fundamental_freq>=BASS_START_FREQ && fundamental_freq<=BASS_END_FREQ)
           changeByMusic(mul);
       }
@@ -132,8 +135,6 @@ void read_data(const uint8_t *data, uint32_t len){
 
 
 void setup() {
-  Serial.begin(115200);
-  
   setLed(R_CH,R_PIN);
   setLed(G_CH,G_PIN);
   setLed(B_CH,B_PIN);
