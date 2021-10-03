@@ -10,7 +10,7 @@
 #define BASS_END_FREQ 150
 #define MAX_RGB_SPECTRUM 767
 #define MIN_MUL 0.01
-#define MAX_MAG 700
+#define MAX_MAG 650
 //the number of the LED pin
 #define R_PIN 14
 #define G_PIN 13
