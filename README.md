@@ -5,6 +5,7 @@ Introduction
 ------------
 
 The Music Reactive LED Strip is an innovative project that combines the power of C/C++ programming with hardware interfacing to create a dynamic LED lighting experience. Utilizing an ESP microcontroller, this project allows for an LED strip to be controlled via Bluetooth. The core functionality lies in its ability to receive audio data through the A2DP protocol and manipulate the LED brightness in response to the bass volume. This effect is achieved by analyzing the audio data using Fast Fourier Transform (FFT) algorithms, creating a synchronized light show that matches the rhythm and intensity of the music.
+[Video](https://drive.google.com/file/d/1ya-h8aM8fE4-PSOFSYqbP8DyZ7q6Cfmq/view?usp=drive_link)
 
 Features
 --------
